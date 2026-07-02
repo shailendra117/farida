@@ -16,7 +16,7 @@ import MobileBottomNav from "../common/MobileBottomNav"
 // import AboutUs from "./AboutUs"
 // import NewsLetter from "./NewsLetter"
 // import Media from "../media/Media"
-import Arrival from "../Collection1/Collection"
+// import Arrival from "../Collection1/Collection"
 
 
 
@@ -42,7 +42,7 @@ function Home(){
       {/* <NewsLetter /> */}
       {/* <BlogPage /> */}
       {/* <Media /> */}
-      <Arrival />
+      {/* <Arrival />  */}
       
            
     </>
