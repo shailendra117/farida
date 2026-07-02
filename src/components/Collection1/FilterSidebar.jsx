@@ -10,7 +10,11 @@ const colors = [
   "Yellow",
   "Green",
   "Red",
-  "Black"
+  "Black",
+  "Orange",
+  "Sky Blue",
+  "Pink"
+
 ];
 
 const sizes = ["XS", "S", "M", "L", "XL"];
@@ -23,10 +27,10 @@ const prices = [
 
 const FilterSidebar = ({ filters, handleFilter }) => {
   const [open, setOpen] = useState({
-    craft: true,
-    color: true,
-    size: true,
-    price: true,
+    craft: false,
+    color: false,
+    size: false,
+    price: false,
   });
 
   const toggle = (key) => {
@@ -37,7 +41,7 @@ const FilterSidebar = ({ filters, handleFilter }) => {
   };
 
   return (
-    <aside className="sticky top-30 pl-5">
+    <aside className="sticky top-30 pl-5 ">
 
       <h2 className="text-2xl  text-gray-600 mb-8">
         Filters
@@ -203,6 +207,7 @@ const FilterSidebar = ({ filters, handleFilter }) => {
           Category
            {open.price ? <ChevronUp /> : <ChevronDown />}
           </button>
+         
        </div>
 
       {/* Availability */}

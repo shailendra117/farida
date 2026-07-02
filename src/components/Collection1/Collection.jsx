@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useMemo, useState } from "react";
 import { SlidersHorizontal, X } from "lucide-react";
 
@@ -6,6 +7,11 @@ import ProductGrid from "../Collection1/ProductGrid";
 import products from "../../data/products";
 
 const Collection = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [filters, setFilters] = useState({
     craft: [],
     color: [],

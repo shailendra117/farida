@@ -1,6 +1,5 @@
 import awardsData from "../../data/awardData";
 import AwardCard from "./AwardCard";
-import Youtube from "./YoutubeVideo"
 
 const Awards = () => {
   return (
@@ -11,7 +10,7 @@ const Awards = () => {
         <h2 className="text-center text-3xl font-serif uppercase mb-14">
           Awards & Accolades
         </h2>
-        <Youtube />
+        
 
         {awardsData.map((award) => (
           <AwardCard

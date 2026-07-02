@@ -12,12 +12,12 @@ const ProductCard = ({ product }) => {
       onMouseLeave={() => setHover(false)}
     >
       {/* Image */}
-      <div className="relative overflow-hidden bg-gray-100">
+      <div className="relative overflow-hidden ">
 
         <img
           src={hover ? product.hoverImage : product.image}
           alt={product.name}
-        className="w-full h-full  lg:h-[420px] object-cover transition duration-500"
+        className="w-full h-full rounded-4xl  lg:h-[380px] object-cover transition duration-500"
         />
 
         {/* Wishlist */}
@@ -48,8 +48,8 @@ const ProductCard = ({ product }) => {
           {product.craft}
         </p>
 
-        <p className="text-sm text-gray-500  mt-3">
-          ₹{product.price}
+        <p className="text-sm text-gray-800  mt-3">
+          ₹{product.price}  
         </p>
 
         <div className="flex flex-wrap gap-2 mt-2 text-gray-500">

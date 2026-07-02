@@ -1,10 +1,10 @@
-import video3 from "../../assets/video/video3.mp4";
+import video from "../../assets/video/video3.mp4";
 
 export default function VideoSection() {
   return (
     <div className="mt-8 sm:mt-10 px-3 sm:px-6 md:px-10 lg:px-20">
       <video
-        src={video3}
+        src={video}
         autoPlay
         muted
         loop

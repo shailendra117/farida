@@ -17,7 +17,7 @@ function Navbar({ openMenu }) {
       </Link>
 
       {/* Desktop Menu */}
-      <ul className="hidden lg:flex items-center gap-7 text-[12px] tracking-[0.15em] uppercase text-gray-700 font-semibold">
+      <ul className="hidden lg:flex items-center gap-4 text-[12px] uppercase text-gray-900 font-semibold">
         <li>
           <Link to="/new-arrivals" className="hover:text-[#7B1D2A]">
             New Arrivals
@@ -25,37 +25,37 @@ function Navbar({ openMenu }) {
         </li>
 
         <li>
-          <Link to="#" className="hover:text-[#7B1D2A]">
+          <Link to="/fg-woman" className="hover:text-[#7B1D2A]">
             FG Woman
           </Link>
         </li>
 
         <li>
-          <Link to="#" className="hover:text-[#7B1D2A]">
+          <Link to="/fg-bestseller" className="hover:text-[#7B1D2A]">
             FG Bestsellers
           </Link>
         </li>
 
         <li>
-          <Link to="#" className="hover:text-[#7B1D2A]">
+          <Link to="/fg-basics" className="hover:text-[#7B1D2A]">
             FG Basics
           </Link>
         </li>
 
         <li>
-          <Link to="#" className="hover:text-[#7B1D2A]">
+          <Link to="/sale" className="hover:text-[#7B1D2A]">
             Sale
           </Link>
         </li>
 
         <li>
-          <Link to="#" className="hover:text-[#7B1D2A]">
+          <Link to="/fg-surplus" className="hover:text-[#7B1D2A]">
             FG Surplus
           </Link>
         </li>
 
         <li>
-          <Link to="#" className="hover:text-[#7B1D2A]">
+          <Link to="/exhibitions" className="hover:text-[#7B1D2A]">
             Exhibitions
           </Link>
         </li>
@@ -64,28 +64,28 @@ function Navbar({ openMenu }) {
       {/* Right Icons */}
       <div className="flex items-center gap-3 sm:gap-5">
         {/* Currency */}
-        <span className="hidden sm:flex items-center gap-1 text-sm font-medium tracking-wider">
+        <span className="hidden sm:flex items-center gap-1 text-xs font-medium tracking-wider">
           ₹ INR
         </span>
 
         {/* Search */}
         <button className="hidden sm:block hover:text-[#7B1D2A]">
-          <FaSearch size={22} />
+          <FaSearch size={18} />
         </button>
 
         {/* Wishlist */}
         <button className="hidden sm:block hover:text-[#7B1D2A]">
-          <FaRegHeart size={22} />
+          <FaRegHeart size={20} />
         </button>
 
         {/* Account */}
         <button className="hidden sm:block hover:text-[#7B1D2A]">
-          <FaRegUser size={22} />
+          <FaRegUser size={20} />
         </button>
 
         {/* Cart */}
         <button className="hidden sm:block hover:text-[#7B1D2A]">
-          <FiShoppingBag size={22} />
+          <FiShoppingBag size={20} />
         </button>
 
         {/* Hamburger */}

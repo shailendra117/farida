@@ -31,74 +31,35 @@ function HeroSlider() {
       desktop: banner4,
     },
   ];
-  const sliderData = [
-  slides[slides.length - 1],
-  ...slides,
-  slides[0],
-];
 
-
-    const [currentSlide, setCurrentSlide] = useState(1);
-const [transition, setTransition] = useState(true);
-
+  const [currentSlide, setCurrentSlide] = useState(0);
   const startX = useRef(0);
   const endX = useRef(0);
 
-  // Next Slide
   const nextSlide = () => {
-  setCurrentSlide((prev) => prev + 1);
-};
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
 
-  // Previous Slide
   const prevSlide = () => {
-  setCurrentSlide((prev) => prev - 1);
-};
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
-const handleTransitionEnd = () => {
-  // Last Clone -> First Slide
-  if (currentSlide === slides.length + 1) {
-    setTransition(false);
-    setCurrentSlide(1);
-  }
-
-  // First Clone -> Last Slide
-  if (currentSlide === 0) {
-    setTransition(false);
-    setCurrentSlide(slides.length);
-  }
-};
-  // Auto Slide
   useEffect(() => {
-  const interval = setInterval(() => {
-    nextSlide();
-  }, 3000);
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
 
-  return () => clearInterval(interval);
-}, []);
+    return () => clearInterval(interval);
+  }, []);
 
-
-useEffect(() => {
-  if (!transition) {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setTransition(true);
-      });
-    });
-  }
-}, [transition]);
-
-
-  // Touch Start
   const handleTouchStart = (e) => {
     startX.current = e.touches[0].clientX;
   };
 
-  // Touch Move
   const handleTouchMove = (e) => {
     endX.current = e.touches[0].clientX;
   };
 
-  // Touch End
   const handleTouchEnd = () => {
     const diff = startX.current - endX.current;
 
@@ -121,18 +82,12 @@ useEffect(() => {
         {/* Slider */}
         <div
           className="flex transition-transform duration-700 ease-in-out"
-         style={{
-  transform: `translateX(-${currentSlide * 100}%)`,
-  transition: transition
-    ? "transform .7s ease-in-out"
-    : "none",
-}}
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          onTransitionEnd={handleTransitionEnd}
         >
-          {sliderData.map((slide, index) => (
+          {slides.map((slide, index) => (
             <div
               key={index}
               className="min-w-full flex justify-center"
@@ -179,11 +134,9 @@ useEffect(() => {
           {slides.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentSlide(index + 1)}
+              onClick={() => setCurrentSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                (currentSlide - 1 + slides.length) % slides.length === index
-                  ? "bg-white"
-                  : "bg-white/50"
+                currentSlide === index ? "bg-white" : "bg-white/50"
               }`}
             />
           ))}

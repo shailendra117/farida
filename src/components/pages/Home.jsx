@@ -17,6 +17,8 @@ import MobileBottomNav from "../common/MobileBottomNav"
 // import NewsLetter from "./NewsLetter"
 // import Media from "../media/Media"
 // import Arrival from "../Collection1/Collection"
+//  import Woman from "../woman/Woman"
+
 
 
 
@@ -43,6 +45,7 @@ function Home(){
       {/* <BlogPage /> */}
       {/* <Media /> */}
       {/* <Arrival />  */}
+      {/* <Woman /> */}
       
            
     </>

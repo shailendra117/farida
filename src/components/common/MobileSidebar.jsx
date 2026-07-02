@@ -76,59 +76,59 @@ function MobileSidebar({ isOpen, closeMenu }) {
             <span>›</span>
           </Link>
 
-          <a
-            href="#"
+          <Link
+            to="/fg-woman"
             onClick={closeMenu}
             className="flex justify-between items-center px-6 py-4 hover:bg-gray-100"
           >
             <span>FG WOMAN</span>
             <span>›</span>
-          </a>
+          </Link>
 
-          <a
-            href="#"
+          <Link
+            to="/fg-bestseller"
             onClick={closeMenu}
             className="flex justify-between items-center px-6 py-4 hover:bg-gray-100"
           >
             <span>FG BESTSELLERS</span>
             <span>›</span>
-          </a>
+          </Link>
 
-          <a
-            href="#"
+          <Link
+            to="/fg-basics"
             onClick={closeMenu}
             className="flex justify-between items-center px-6 py-4 hover:bg-gray-100"
           >
             <span>FG BASICS</span>
             <span>›</span>
-          </a>
+          </Link>
 
-          <a
-            href="#"
+          <Link
+            to="/sale"
             onClick={closeMenu}
             className="flex justify-between items-center px-6 py-4 hover:bg-gray-100"
           >
             <span>SALE</span>
             <span>›</span>
-          </a>
+          </Link>
 
-          <a
-            href="#"
+          <Link
+            to="/about-us"
             onClick={closeMenu}
             className="flex justify-between items-center px-6 py-4 hover:bg-gray-100"
           >
-            <span>FG SURPLUS</span>
+            <span>ABOUT US</span>
             <span>›</span>
-          </a>
+          </Link>
 
-          <a
-            href="#"
+          <Link
+            to="/blog"
             onClick={closeMenu}
             className="flex justify-between items-center px-6 py-4 hover:bg-gray-100"
           >
-            <span>EXHIBITIONS</span>
+            <span>BLOG</span>
             <span>›</span>
-          </a>
+          </Link>
         </div>
 
         {/* Bottom */}
