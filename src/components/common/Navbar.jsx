@@ -62,7 +62,7 @@ function Navbar({ openMenu }) {
       </ul>
 
       {/* Right Icons */}
-      <div className="flex items-center gap-3 sm:gap-5">
+      <div className="flex items-center text-gray-800 gap-3 sm:gap-5">
         {/* Currency */}
         <span className="hidden sm:flex items-center gap-1 text-xs font-medium tracking-wider">
           ₹ INR
@@ -91,8 +91,8 @@ function Navbar({ openMenu }) {
         {/* Hamburger */}
         <button
     onClick={openMenu}
-    className="lg:hidden hover:text-[#7B1D2A]">
-          <FaBars size={28} />
+    className="lg:hidden text-gray-800 hover:text-[#7B1D2A]">
+          <FaBars size={26} />
         </button>
       </div>
     </nav>

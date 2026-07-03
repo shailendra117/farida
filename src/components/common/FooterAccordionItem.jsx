@@ -7,7 +7,7 @@ export default function FooterAccordionItem({ title, children }) {
     <div className="border-b">
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="footer-btn flex justify-between items-center w-full py-4 font-semibold uppercase tracking-wider"
+        className="footer-btn flex justify-between text-gray-800 items-center w-full py-4 font-semibold uppercase tracking-wider"
       >
         <span>{title}</span>
         <span className="arrow">{open ? "\u2212" : "+"}</span>

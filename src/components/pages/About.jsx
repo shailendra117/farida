@@ -11,8 +11,11 @@ export default function About() {
 
   return (
     
+    
     <div className="px-4 sm:px-8 mt-25 lg:px-16 py-10 max-w-6xl mx-auto space-y-16 sm:space-y-20">
-
+      
+ <div>
+  <p className="text-xs text-gray-500 p-2"><a href="/">Home/ </a><span>About Us</span></p>
       {/* About The Designer */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
         <div className="overflow-hidden rounded-xl">
@@ -133,6 +136,8 @@ export default function About() {
             increasing artisanal employment every single step of the way.
           </p>
         </div>
+      </div>
+
       </div>
 
     </div>
