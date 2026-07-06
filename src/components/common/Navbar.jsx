@@ -1,10 +1,30 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaRegHeart, FaRegUser, FaBars } from "react-icons/fa";
 import { FiShoppingBag } from "react-icons/fi";
+import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
+import SearchModal from "./SearchModal";
+import { useEffect, useState } from "react";
 
 import logo from "../../assets/images/logo1.png";
 
 function Navbar({ openMenu }) {
+  const { cartCount } = useCart();
+  const { items: wishlistItems } = useWishlist();
+  const [openSearch, setOpenSearch] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handler = () => setOpenSearch(true);
+    window.addEventListener("openSearch", handler);
+    return () => window.removeEventListener("openSearch", handler);
+  }, []);
+
+  const handleCloseSearch = () => setOpenSearch(false);
+  const handleSearch = (q) => {
+    setOpenSearch(false);
+    navigate(`/new-arrivals?search=${encodeURIComponent(q)}`);
+  };
   return (
     <nav className="fixed top-11 left-0 right-0 z-50 bg-white border-b border-gray-100 px-4 sm:px-6 py-4 flex items-center justify-between">
       {/* Logo */}
@@ -69,14 +89,19 @@ function Navbar({ openMenu }) {
         </span>
 
         {/* Search */}
-        <button className="hidden sm:block hover:text-[#7B1D2A]">
+        <button className="hidden sm:block hover:text-[#7B1D2A]" onClick={() => setOpenSearch(true)}>
           <FaSearch size={18} />
         </button>
 
         {/* Wishlist */}
-        <button className="hidden sm:block hover:text-[#7B1D2A]">
+        <Link to="/wishlist" className="hidden sm:block relative hover:text-[#7B1D2A]">
           <FaRegHeart size={20} />
-        </button>
+          {wishlistItems.length > 0 && (
+            <span className="absolute -top-2 -right-3 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#7B1D2A] px-1.5 text-[10px] font-semibold text-white">
+              {wishlistItems.length}
+            </span>
+          )}
+        </Link>
 
         {/* Account */}
         <button className="hidden sm:block hover:text-[#7B1D2A]">
@@ -84,9 +109,14 @@ function Navbar({ openMenu }) {
         </button>
 
         {/* Cart */}
-        <button className="hidden sm:block hover:text-[#7B1D2A]">
+        <Link to="/bag" className="relative hidden sm:block hover:text-[#7B1D2A]">
           <FiShoppingBag size={20} />
-        </button>
+          {cartCount > 0 && (
+            <span className="absolute -top-2 -right-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#7B1D2A] px-1.5 text-[10px] font-semibold text-white">
+              {cartCount}
+            </span>
+          )}
+        </Link>
 
         {/* Hamburger */}
         <button
@@ -95,6 +125,7 @@ function Navbar({ openMenu }) {
           <FaBars size={26} />
         </button>
       </div>
+      {openSearch && <SearchModal onClose={handleCloseSearch} onSearch={handleSearch} />}
     </nav>
   );
 }

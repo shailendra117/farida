@@ -8,7 +8,7 @@ export default function SubscribeForm() {
   };
 
   const subscribe = () => {
-    console.log("Subscribing phone:", phone);
+    console.log("You Subscribed :" , phone);
     // yahan apna API call ya backend logic daalna
   };
 

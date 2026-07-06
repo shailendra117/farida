@@ -46,7 +46,7 @@ function MobileSidebar({ isOpen, closeMenu }) {
       {/* Sidebar */}
 
       <div
-        className={`fixed top-0 left-0 h-screen w-80 max-w-[85%] bg-white z-50 transition-transform duration-300 shadow-2xl ${
+        className={`fixed top-0 left-0 h-screen w-[min(85%,320px)] bg-white z-50 transition-transform duration-300 shadow-2xl ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -112,40 +112,12 @@ function MobileSidebar({ isOpen, closeMenu }) {
             <span>›</span>
           </Link>
 
-          <Link
-            to="/about-us"
-            onClick={closeMenu}
-            className="flex justify-between items-center px-6 py-4 hover:bg-gray-100"
-          >
-            <span>ABOUT US</span>
-            <span>›</span>
-          </Link>
+          
 
-          <Link
-            to="/blog"
-            onClick={closeMenu}
-            className="flex justify-between items-center px-6 py-4 hover:bg-gray-100"
-          >
-            <span>BLOG</span>
-            <span>›</span>
-          </Link>
+         
         </div>
 
-        {/* Bottom */}
-
-        <div className="absolute bottom-0 left-0 right-0 border-t">
-          <a href="#" className="block px-6 py-4 hover:bg-gray-100">
-            ₹ INR
-          </a>
-
-          <a href="#" className="block px-6 py-4 hover:bg-gray-100">
-            Wishlist
-          </a>
-
-          <a href="#" className="block px-6 py-4 hover:bg-gray-100">
-            My Account
-          </a>
-        </div>
+       
       </div>
     </>
   );

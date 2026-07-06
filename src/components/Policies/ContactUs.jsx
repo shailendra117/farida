@@ -1,11 +1,50 @@
-import { useEffect } from "react";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
+import { MapPin, Phone, Mail, CheckCircle2 } from "lucide-react";
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
 
-   useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const validate = () => {
+    const nextErrors = {};
+
+    if (!formData.name.trim()) nextErrors.name = "Name is required";
+    if (!formData.email.trim()) nextErrors.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) nextErrors.email = "Enter a valid email";
+    if (!formData.message.trim()) nextErrors.message = "Message is required";
+
+    return nextErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const nextErrors = validate();
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
+      setSubmitted(false);
+      return;
+    }
+
+    setSubmitted(true);
+    setFormData({ name: "", email: "", phone: "", message: "" });
+  };
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-16">
@@ -16,30 +55,52 @@ const ContactUs = () => {
             Send Us A Message
           </h2>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            {submitted && (
+              <div className="flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+                <CheckCircle2 size={16} />
+                Your message has been received. We will get back to you soon.
+              </div>
+            )}
+
             <input
               type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Full Name"
               className="w-full border border-gray-300 rounded-full px-4 py-2 outline-none focus:border-[#7B1D2A]"
             />
+            {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
 
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Email"
               className="w-full border border-gray-300 rounded-full px-4 py-2 outline-none focus:border-[#7B1D2A]"
             />
+            {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
 
             <input
               type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               placeholder="Mobile Number"
               className="w-full border border-gray-300 rounded-full px-4 py-2 outline-none focus:border-[#7B1D2A]"
             />
 
             <textarea
               rows="4"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               placeholder="Your Message"
               className="w-full border border-gray-300 rounded-3xl px-4 py-2 outline-none resize-none focus:border-[#7B1D2A]"
             />
+            {errors.message && <p className="text-sm text-red-500">{errors.message}</p>}
 
             <button
               type="submit"

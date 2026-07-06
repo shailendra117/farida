@@ -16,7 +16,7 @@ export default function FGCrafts() {
       </h2>
 
       {/* Mobile View */}
-      <div className="grid grid-cols-2 gap-1 h-[300px] sm:hidden">
+      <div className="grid grid-cols-2 gap-1 h-[320px] sm:hidden">
         {/* Left big image */}
         <div className="relative row-span-2 overflow-hidden rounded-l-3xl group">
           <img

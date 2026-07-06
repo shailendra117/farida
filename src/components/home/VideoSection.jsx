@@ -9,7 +9,7 @@ export default function VideoSection() {
         muted
         loop
         playsInline
-        className="w-full h-[350px] sm:h-[450px] md:h-[550px] lg:h-[690px] object-cover rounded-xl sm:rounded-2xl lg:rounded-3xl"
+        className="w-full h-[350px] sm:h-[450px] md:h-[500px] lg:h-[550px] object-cover rounded-xl sm:rounded-2xl lg:rounded-3xl"
       />
     </div>
   );

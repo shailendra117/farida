@@ -1,12 +1,16 @@
 import { useEffect } from "react";
 import { useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { SlidersHorizontal, X } from "lucide-react";
 
 import FilterSidebar from "../Collection1/FilterSidebar";
 import ProductGrid from "../Collection1/ProductGrid";
+import SearchBar from "../Collection1/SearchBar";
+import PageBanner from "../common/PageBanner";
 import products from "../../data/products";
 
 const Collection = () => {
+  const location = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,6 +24,13 @@ const Collection = () => {
   });
 
   const [showMobileFilter, setShowMobileFilter] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortBy, setSortBy] = useState("featured");
+
+  useEffect(() => {
+    const query = new URLSearchParams(location.search).get("search") || "";
+    setSearchTerm(query);
+  }, [location.search]);
 
   const handleFilter = (type, value) => {
     setFilters((prev) => ({
@@ -31,23 +42,25 @@ const Collection = () => {
   };
 
   const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      // Craft
+    const filtered = products.filter((product) => {
+      const searchMatch =
+        searchTerm.trim() === "" ||
+        `${product.name} ${product.craft} ${product.color} ${product.category}`
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+
       const craftMatch =
         filters.craft.length === 0 ||
         filters.craft.includes(product.craft);
 
-      // Color
       const colorMatch =
         filters.color.length === 0 ||
         filters.color.includes(product.color);
 
-      // Size
       const sizeMatch =
         filters.size.length === 0 ||
         product.sizes.some((size) => filters.size.includes(size));
 
-      // Price
       const priceMatch =
         filters.price.length === 0 ||
         filters.price.some((range) => {
@@ -61,41 +74,46 @@ const Collection = () => {
           return false;
         });
 
-      return (
-        craftMatch &&
-        colorMatch &&
-        sizeMatch &&
-        priceMatch
-      );
+      return searchMatch && craftMatch && colorMatch && sizeMatch && priceMatch;
     });
-  }, [filters]);
+
+    const sorted = [...filtered];
+
+    if (sortBy === "low-high") {
+      sorted.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "high-low") {
+      sorted.sort((a, b) => b.price - a.price);
+    } else if (sortBy === "name") {
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    return sorted;
+  }, [filters, searchTerm, sortBy]);
 
   return (
     <>
+      
       <section className="max-w-8xl mx-auto px-5 py-10 mt-20">
-
-        {/* Heading */}
-        <div className="flex justify-between items-center mb-8">
-
+        <div className="flex flex-col gap-4 lg:flex-row lg:justify-between lg:items-center mb-8">
           <div>
-            <h2 className="hidden lg:bloack text-xl  font-semibold">
+            <h2 className="text-xl font-semibold text-[#3c2a21]">
               Discover New Arrivals
             </h2>
-
-            <p className="text-gray-500 mt-1">
-              {filteredProducts.length} Products
+            <p className="text-gray-500 text-sm">
+              {filteredProducts.length} products available
             </p>
           </div>
 
-          {/* Mobile Filter Button */}
-          <button
-            onClick={() => setShowMobileFilter(true)}
-            className="lg:hidden flex items-center gap-2 border border-gray-300 rounded-lg px-4 py-2"
-          >
-            <SlidersHorizontal size={18} />
-            Filters
-          </button>
-
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center w-full lg:w-auto">
+           
+            <button
+              onClick={() => setShowMobileFilter(true)}
+              className="flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-semibold text-gray-700 hover:border-[#7b1e2b] hover:text-[#7b1e2b] transition"
+            >
+              <SlidersHorizontal size={18} />
+              Filters
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-12 gap-10">
@@ -110,7 +128,14 @@ const Collection = () => {
 
           {/* Products */}
           <div className="col-span-12 lg:col-span-9">
-            <ProductGrid products={filteredProducts} />
+            {filteredProducts.length > 0 ? (
+              <ProductGrid products={filteredProducts} />
+            ) : (
+              <div className="rounded-3xl border border-dashed border-gray-300 bg-[#fdf7f2] p-10 text-center text-gray-600">
+                <h3 className="text-xl font-semibold text-[#3c2a21]">No products match your search.</h3>
+                <p className="mt-2">Try a different keyword or clear some filters to view more products.</p>
+              </div>
+            )}
           </div>
 
         </div>
@@ -127,7 +152,7 @@ const Collection = () => {
           ></div>
 
           {/* Drawer */}
-          <div className="fixed top-0 left-0 h-screen w-80 bg-white z-50 shadow-xl overflow-y-auto">
+          <div className="fixed top-0 left-0 h-screen w-[min(85%,320px)] bg-white z-50 shadow-xl overflow-y-auto">
 
             <div className="flex justify-between items-center p-5 border-b">
 

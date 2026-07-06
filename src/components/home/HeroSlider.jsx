@@ -32,25 +32,68 @@ function HeroSlider() {
     },
   ];
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // Create clones for seamless loop: [last, ...slides, first]
+  const extendedSlides = [slides[slides.length - 1], ...slides, slides[0]];
+
+  const [index, setIndex] = useState(1); // start at first real slide (extendedSlides[1])
+  const [isPaused, setIsPaused] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(true);
   const startX = useRef(0);
   const endX = useRef(0);
+  const sliderRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setIndex((prev) => prev + 1);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setIndex((prev) => prev - 1);
   };
 
+  // Autoplay
   useEffect(() => {
+    if (isPaused) return undefined;
+
     const interval = setInterval(() => {
       nextSlide();
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isPaused]);
+
+  // Handle transition end to jump from clones to real slides without visible jump
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+
+    const onTransitionEnd = () => {
+      // If we've moved to the cloned first (right-most) slide, jump to real first
+      if (index === extendedSlides.length - 1) {
+        setIsAnimating(false);
+        setIndex(1);
+      }
+
+      // If we've moved to the cloned last (left-most) slide, jump to real last
+      if (index === 0) {
+        setIsAnimating(false);
+        setIndex(slides.length);
+      }
+    };
+
+    el.addEventListener("transitionend", onTransitionEnd);
+    return () => el.removeEventListener("transitionend", onTransitionEnd);
+  }, [index, extendedSlides.length, slides.length]);
+
+  // Re-enable animation after a programmatic jump
+  useEffect(() => {
+    if (!isAnimating) {
+      // Force reflow then enable animation again on next tick
+      // eslint-disable-next-line no-unused-expressions
+      sliderRef.current && sliderRef.current.offsetHeight;
+      requestAnimationFrame(() => setIsAnimating(true));
+    }
+  }, [isAnimating]);
 
   const handleTouchStart = (e) => {
     startX.current = e.touches[0].clientX;
@@ -77,36 +120,53 @@ function HeroSlider() {
 
   return (
     <section className="w-full mt-20">
-      <div className="relative overflow-hidden py-8 mt-8">
+        <div
+        ref={wrapperRef}
+        className="relative overflow-hidden py-4 sm:py-8 mt-4 sm:mt-8"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
 
         {/* Slider */}
         <div
-          className="flex transition-transform duration-700 ease-in-out"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          ref={sliderRef}
+          className={`flex ${isAnimating ? 'transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]' : ''}`}
+          style={{ transform: `translateX(-${index * (wrapperRef.current?.clientWidth || 0)}px)` }}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {slides.map((slide, index) => (
+          {extendedSlides.map((slide, idx) => (
             <div
-              key={index}
-              className="min-w-full flex justify-center"
+              key={idx}
+              className="w-full flex-shrink-0 flex justify-center px-2 sm:px-4"
             >
-              <div className="w-[96%] overflow-hidden rounded-2xl">
+              <div className="relative w-full overflow-hidden rounded-2xl shadow-sm sm:shadow-md">
 
-                {/* Mobile Image */}
-                <img
-                  src={slide.mobile}
-                  alt={`Slide ${index + 1}`}
-                  className="block sm:hidden w-full h-auto rounded-2xl"
-                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent pointer-events-none" />
 
-                {/* Desktop Image */}
-                <img
-                  src={slide.desktop}
-                  alt={`Slide ${index + 1}`}
-                  className="hidden sm:block w-full h-auto rounded-2xl"
-                />
+                {/* Animated content wrapper */}
+                <div
+                  className={`w-full h-full transition-all duration-700 ease-out transform ${
+                    idx === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                  }`}
+                >
+                  {/* Mobile Image */}
+                  <img
+                    src={slide.mobile}
+                    alt={`Slide ${idx}`}
+                    className="block sm:hidden w-full h-auto rounded-2xl"
+                    onClick={(e) => e.stopPropagation()}
+                  />
+
+                  {/* Desktop Image */}
+                  <img
+                    src={slide.desktop}
+                    alt={`Slide ${idx}`}
+                    className="hidden sm:block w-full h-[550px] rounded-2xl"
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                </div>
 
               </div>
             </div>
@@ -116,7 +176,7 @@ function HeroSlider() {
         {/* Previous Button */}
         <button
           onClick={prevSlide}
-          className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow-lg items-center justify-center z-10"
+          className="hidden sm:flex absolute left-10 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-lg items-center justify-center z-10 transition hover:scale-105"
         >
           ❮
         </button>
@@ -124,19 +184,19 @@ function HeroSlider() {
         {/* Next Button */}
         <button
           onClick={nextSlide}
-          className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow-lg items-center justify-center z-10"
+          className="hidden sm:flex absolute right-10 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-lg items-center justify-center z-10 transition hover:scale-105"
         >
           ❯
         </button>
 
-        {/* Dots */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-10">
-          {slides.map((_, index) => (
+        {/* Dots (map to real slides) */}
+        <div className="absolute bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-10 rounded-full bg-black/10 px-2 py-1 sm:px-3 sm:py-2 backdrop-blur-sm">
+          {slides.map((_, dotIndex) => (
             <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentSlide === index ? "bg-white" : "bg-white/50"
+              key={dotIndex}
+              onClick={() => setIndex(dotIndex + 1)}
+              className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                index === dotIndex + 1 ? "bg-white scale-110" : "bg-white/50"
               }`}
             />
           ))}
