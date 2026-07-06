@@ -32,6 +32,18 @@ const Collection = () => {
     setSearchTerm(query);
   }, [location.search]);
 
+  // Prevent body scroll when mobile filter drawer is open
+  useEffect(() => {
+    if (showMobileFilter) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev || "";
+      };
+    }
+    return undefined;
+  }, [showMobileFilter]);
+
   const handleFilter = (type, value) => {
     setFilters((prev) => ({
       ...prev,

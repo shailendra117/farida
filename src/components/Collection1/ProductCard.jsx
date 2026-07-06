@@ -15,11 +15,11 @@ const ProductCard = ({ product }) => {
       onMouseLeave={() => setHover(false)}
     >
       <div className="relative overflow-hidden bg-gray-100">
-        <div className="relative aspect-4/5 overflow-hidden">
+        <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden flex items-center justify-center bg-gray-100">
           <img
             src={hover ? product.hoverImage : product.image}
             alt={product.name}
-            className="absolute inset-0 w-full h-full object-contain transition duration-700 ease-out group-hover:scale-105"
+            className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
           />
         </div>
 
@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
           </button>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 p-4 bg-linear-to-t from-black/60 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute inset-x-0 bottom-0 p-4 bg-linear-to-t from-black/60 to-transparent opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500">
           <div className="flex justify-end">
             <button
               onClick={(e) => {
