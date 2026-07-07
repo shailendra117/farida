@@ -95,7 +95,7 @@ const SalePage = () => {
 
           <button
             onClick={() => setShowMobileFilter(true)}
-            className="flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-semibold text-gray-700 hover:border-[#7b1e2b] hover:text-[#7b1e2b] transition"
+            className=" block lg:hidden flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-semibold text-gray-700 hover:border-[#7b1e2b] hover:text-[#7b1e2b] transition"
           >
             <SlidersHorizontal size={18} />
             Filters
@@ -110,7 +110,7 @@ const SalePage = () => {
 
           {/* Products */}
           <div className="col-span-12 lg:col-span-9">
-            <ProductGrid products={filteredProducts} />
+            <ProductGrid products={filteredProducts} collection={products}/>
           </div>
         </div>
       </section>

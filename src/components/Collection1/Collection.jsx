@@ -105,8 +105,8 @@ const Collection = () => {
   return (
     <>
       
-      <section className="max-w-8xl mx-auto px-5 py-10 mt-20">
-        <div className="flex flex-col gap-4 lg:flex-row lg:justify-between lg:items-center mb-8">
+      <section className="w-full mx-auto px-5 py-10 mt-20">
+         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-xl font-semibold text-[#3c2a21]">
               Discover New Arrivals
@@ -116,16 +116,13 @@ const Collection = () => {
             </p>
           </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center w-full lg:w-auto">
-           
-            <button
-              onClick={() => setShowMobileFilter(true)}
-              className="flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-semibold text-gray-700 hover:border-[#7b1e2b] hover:text-[#7b1e2b] transition"
-            >
-              <SlidersHorizontal size={18} />
-              Filters
-            </button>
-          </div>
+          <button
+            onClick={() => setShowMobileFilter(true)}
+            className="block lg:hidden flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-semibold text-gray-700 hover:border-[#7b1e2b] hover:text-[#7b1e2b] transition"
+          >
+            <SlidersHorizontal size={18} />
+            Filters
+          </button>
         </div>
 
         <div className="grid grid-cols-12 gap-10">
@@ -164,7 +161,7 @@ const Collection = () => {
           ></div>
 
           {/* Drawer */}
-          <div className="fixed top-0 left-0 h-screen w-[min(85%,320px)] bg-white z-50 shadow-xl overflow-y-auto">
+          <div className=" fixed top-0 left-0 h-screen w-[min(85%,320px)] bg-white z-50 shadow-xl overflow-y-auto">
 
             <div className="flex justify-between items-center p-5 border-b">
 

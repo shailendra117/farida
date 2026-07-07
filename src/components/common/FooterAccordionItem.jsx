@@ -15,7 +15,9 @@ export default function FooterAccordionItem({ title, children }) {
 
       <div className={`footer-content ${open ? "" : "hidden"} pb-4`}>
         {children}
+
       </div>
+      
     </div>
   );
 }

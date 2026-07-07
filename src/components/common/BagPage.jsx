@@ -23,7 +23,7 @@ const BagPage = () => {
           <h2 className="text-xl font-semibold text-[#3c2a21] mb-3">Your bag is empty</h2>
           <p className="mb-6">Add products to your bag and they will appear here.</p>
           <Link to="/new-arrivals" className="inline-flex rounded-full bg-[#7B1D2A] px-6 py-3 text-white text-sm font-semibold hover:bg-[#5b151f] transition">
-            Shop New Arrivals
+            Continue Shopping 
           </Link>
         </div>
       ) : (
