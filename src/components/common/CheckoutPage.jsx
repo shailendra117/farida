@@ -46,13 +46,8 @@ const CheckoutPage = () => {
     <Announcement />
     <Navbar openMenu={() => setIsOpen(true)} />
     <MobileSidebar isOpen={isOpen} closeMenu={() => setIsOpen(false)} />
-    <section className="max-w-5xl mx-auto px-5 py-10 mt-20">
-      <div className={`${showSuccessModal ? 'filter blur-sm pointer-events-none' : ''}`}>
-      <div className="mb-10 rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
-        <h1 className="text-3xl font-semibold text-[#3c2a21] mb-4">Checkout</h1>
-        <p className="text-gray-600">Review your order and place it to complete the purchase.</p>
-      </div>
-      </div>
+    <section className="max-w-5xl mx-auto px-5 py-10 mt-25">
+      
 
         <aside className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
           <div className="flex items-center justify-between">

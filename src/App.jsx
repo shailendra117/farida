@@ -7,6 +7,7 @@ import FgWoman from "./components/pages/FgWoman";
 import FgBestSeller from "./components/pages/FgBestSeller";
 import FgBasics from "./components/pages/FgBasics";
 import Sale from "./components/pages/Sale";
+import FGSurplus from "./components/pages/FGSurplus";
 import Exhibitions from "./components/pages/Exhibitions";
 import BagPage from "./components/common/BagPage";
 import CheckoutPage from "./components/common/CheckoutPage";
@@ -60,6 +61,7 @@ function App() {
           <Route path="/fg-bestseller" element={<FgBestSeller />} />
           <Route path="/fg-basics" element={<FgBasics />} />
           <Route path="/sale" element={<Sale />} />
+          <Route path="/fg-surplus" element={<FGSurplus />} />
           <Route path="/bag" element={<BagPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-success" element={<OrderSuccess />} />

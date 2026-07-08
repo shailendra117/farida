@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const OrderSuccess = () => {
   return (
-    <section className="max-w-4xl mx-auto mt-35 px-5 py-20">
+    <section className="max-w-4xl mx-auto mt-20 px-5 py-20">
       <div className="rounded-[32px] border border-gray-200 bg-white p-10 text-center shadow-sm">
         <div className="mx-auto mb-8 flex h-15 w-15 items-center justify-center rounded-full text-[#eef2f4] text-2xl font-bold bg-[#0af00d]">
           ✓

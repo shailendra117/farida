@@ -43,7 +43,7 @@ const FilterSidebar = ({ filters, handleFilter }) => {
   return (
     <aside className="sticky top-30 pl-5 ">
 
-      <h2 className="text-2xl  text-gray-600 mb-8">
+      <h2 className="text-2xl  text-gray-600 mb-8 :hidden">
         Filters
       </h2>
 

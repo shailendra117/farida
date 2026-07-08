@@ -4,7 +4,7 @@ import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const ProductCard = ({ product, collection }) => {
+const ProductCard = ({ product, collection, badgeLabel }) => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
@@ -36,7 +36,12 @@ const ProductCard = ({ product, collection }) => {
         className="group bg-white rounded-[28px] overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-shadow duration-300"
       >
         <div className="relative overflow-hidden bg-gray-100">
-          <div className="relative w-full aspect-[3/4] overflow-hidden flex items-center justify-center bg-[#f8f8f8]">
+          {badgeLabel && (
+            <span className="absolute left-4 top-4 z-10 rounded-full bg-[#CE7C75] px-2 py-3 text-xs font-semibold uppercase tracking-wide text-white shadow-sm">
+              {badgeLabel}
+            </span>
+          )}
+          <div className="relative w-full min-h-[320px] overflow-hidden flex items-center justify-center bg-[#f8f8f8] sm:min-h-[340px] md:min-h-[360px]">
             <motion.img
               src={hover ? product.hoverImage : product.image}
               alt={product.name}
@@ -89,20 +94,7 @@ const ProductCard = ({ product, collection }) => {
                 }}
                 className="rounded-full bg-white text-sm font-semibold text-[#3c2a21] py-2 px-4 shadow-md hover:bg-[#f8f0ee] transition flex items-center gap-2"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <path
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                
                 Add to bag
               </button>
             </div>
@@ -120,9 +112,9 @@ const ProductCard = ({ product, collection }) => {
               <p className="text-sm text-gray-500 mt-1">{product.craft}</p>
 
               <div className="flex items-center gap-3 mt-3">
-                <span className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium">
+                {/* <span className="rounded-full hidden md:block border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium">
                   {product.color}
-                </span>
+                </span> */}
 
                 <div className="flex items-center gap-2 flex-wrap lg:flex-nowrap">
                   {product.sizes.map((s) => (
@@ -148,7 +140,7 @@ const ProductCard = ({ product, collection }) => {
               </div>
             </div>
 
-            <p className="text-lg font-semibold text-[#3c2a21]">
+            <p className="text-lg text-[#3c2a21]">
               ₹{product.price}
             </p>
           </div>

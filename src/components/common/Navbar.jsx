@@ -32,12 +32,12 @@ function Navbar({ openMenu }) {
         <img
           src={logo}
           alt="Logo"
-          className="w-32 sm:w-42 md:w-48 lg:w-50"
+          className="h-auto w-28 transition-all duration-300 sm:w-32 md:w-36 lg:w-44 xl:w-48"
         />
       </Link>
 
       {/* Desktop Menu */}
-      <ul className="hidden lg:flex items-center gap-4 text-[12px] uppercase text-gray-900 font-semibold">
+      <ul className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs xl:text-sm uppercase  tracking-wide">
         <li>
           <Link to="/new-arrivals" className="hover:text-[#7B1D2A]">
             New Arrivals
@@ -82,19 +82,25 @@ function Navbar({ openMenu }) {
       </ul>
 
       {/* Right Icons */}
-      <div className="flex items-center text-gray-800 gap-3 sm:gap-5">
+   <div className="flex items-center gap-2 text-gray-800 sm:gap-4 lg:gap-5">
         {/* Currency */}
-        <span className="hidden sm:flex items-center gap-1 text-xs font-medium tracking-wider">
+        <span className=" hidden lg:flex items-center gap-1 text-xs font-medium tracking-wider">
           ₹ INR
         </span>
 
         {/* Search */}
-        <button className="hidden sm:block hover:text-[#7B1D2A]" onClick={() => setOpenSearch(true)}>
-          <FaSearch size={18} />
-        </button>
+        <button
+  className="hidden md:flex rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]"
+  onClick={() => setOpenSearch(true)}
+>
+  <FaSearch size={18} />
+</button>
 
         {/* Wishlist */}
-        <Link to="/wishlist" className="hidden sm:block relative hover:text-[#7B1D2A]">
+        <Link
+  to="/wishlist"
+  className="relative hidden md:flex rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]"
+>
           <FaRegHeart size={20} />
           {wishlistItems.length > 0 && (
             <span className="absolute -top-2 -right-3 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#7B1D2A] px-1.5 text-[10px] font-semibold text-white">
@@ -104,12 +110,15 @@ function Navbar({ openMenu }) {
         </Link>
 
         {/* Account */}
-        <button className="hidden sm:block hover:text-[#7B1D2A]">
+        <button className="relative hidden md:flex rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]">
           <FaRegUser size={20} />
         </button>
 
         {/* Cart */}
-        <Link to="/bag" className="relative hidden sm:block hover:text-[#7B1D2A]">
+        <Link
+  to="/bag"
+  className="relative rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]"
+>
           <FiShoppingBag size={20} />
           {cartCount > 0 && (
             <span className="absolute -top-2 -right-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#7B1D2A] px-1.5 text-[10px] font-semibold text-white">
@@ -121,11 +130,12 @@ function Navbar({ openMenu }) {
         {/* Hamburger */}
         <button
     onClick={openMenu}
-    className="lg:hidden text-gray-800 hover:text-[#7B1D2A]">
+    className="rounded-full p-2 text-gray-800 transition hover:bg-gray-100 hover:text-[#7B1D2A] lg:hidden">
           <FaBars size={26} />
         </button>
-      </div>
+      
       {openSearch && <SearchModal onClose={handleCloseSearch} onSearch={handleSearch} />}
+      </div>
     </nav>
   );
 }

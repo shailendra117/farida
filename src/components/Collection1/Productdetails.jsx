@@ -43,15 +43,13 @@ export default function ProductDetails() {
       <Navbar openMenu={() => setIsOpen(true)} />
       <MobileSidebar isOpen={isOpen} closeMenu={() => setIsOpen(false)} />
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-28">
+        <div className="grid gap-8 lg:grid-cols-3 lg:gap-12">
           {/* LEFT IMAGES */}
 
           <div className="lg:col-span-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              
-              <motion.img
-                src={product.image}
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+              <motion.div
                 initial={{
                   opacity: 0,
                   x: -50,
@@ -63,10 +61,16 @@ export default function ProductDetails() {
                 transition={{
                   duration: 0.6,
                 }}
-                className="w-full rounded-2xl object-cover"
-              />
-              <motion.img
-                src={product.hoverImage}
+                className="overflow-hidden rounded-2xl bg-[#f8f8f8] aspect-[3/4] sm:aspect-[4/5]"
+              >
+                <motion.img
+                  src={product.image}
+                  className="h-full w-full object-contain"
+                  alt={product.name}
+                />
+              </motion.div>
+
+              <motion.div
                 initial={{
                   opacity: 0,
                   x: 50,
@@ -78,29 +82,36 @@ export default function ProductDetails() {
                 transition={{
                   duration: 0.6,
                 }}
-                className="w-full rounded-2xl object-cover"
-              />
-
-             
+                className="overflow-hidden rounded-2xl bg-[#f8f8f8] aspect-[3/4] sm:aspect-[4/5]"
+              >
+                <motion.img
+                  src={product.hoverImage}
+                  className="h-full w-full object-contain"
+                  alt={`${product.name} alternate view`}
+                />
+              </motion.div>
             </div>
            </div>
 
            {/* RIGHT DETAILS */}
 
-           <motion.div  initial={{
-   opacity:0,
-   x:50
- }}
- animate={{
-   opacity:1,
-   x:0
- }}
- transition={{
-   duration:0.6
- }} className="lg:sticky lg:top-24 h-fit border border-gray-200 rounded-3xl p-5 sm:p-7 bg-white shadow-sm">
-            <h1 className="text-2xl lg:text-xl font-semibold text-[#3c2a21]">
-              {product.name}
-            </h1>
+           <motion.div
+             initial={{
+               opacity: 0,
+               x: 50,
+             }}
+             animate={{
+               opacity: 1,
+               x: 0,
+             }}
+             transition={{
+               duration: 0.6,
+             }}
+             className="lg:sticky lg:top-24 h-fit border border-gray-200 rounded-3xl p-5 sm:p-7 bg-white shadow-sm"
+           >
+             <h1 className="text-2xl sm:text-3xl font-semibold text-[#3c2a21]">
+               {product.name}
+             </h1>
 
             <p className="text-gray-500 text-sm mt-2">
               {product.craft} Hand Block Printed Kurta

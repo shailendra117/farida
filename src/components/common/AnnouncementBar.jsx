@@ -28,11 +28,11 @@ function AnnouncementBar() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-[#E8C167] text-black flex items-center justify-between px-2 sm:px-4 md:px-7 py-2">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-[#E8C167] text-black flex items-center justify-between px-3 sm:px-5 lg:px-8  ">
       {/* Left Arrow */}
       <button
         onClick={() => changeAnnouncement(-1)}
-        className="text-xl sm:text-2xl md:text-3xl opacity-70 hover:opacity-100 transition px-2"
+        className="text-lg sm:text-xl md:text-2xl opacity-70 hover:opacity-100 transition px-2"
       >
         &#8249;
       </button>
@@ -40,7 +40,7 @@ function AnnouncementBar() {
       {/* Announcement */}
       <div className="flex-1 overflow-hidden mx-2 sm:mx-4">
         <div className="transition-all duration-500">
-          <p className="text-center text-black sm:text-sm md:text-md leading-5 whitespace-nowrap overflow-hidden text-ellipsis">
+          <p className="text-center text-black text-xs sm:text-sm md:text-base leading-5 sm:leading-6 break-words">
             {announcements[current]}
           </p>
         </div>
@@ -49,7 +49,7 @@ function AnnouncementBar() {
       {/* Right Arrow */}
       <button
         onClick={() => changeAnnouncement(1)}
-        className="text-xl sm:text-2xl md:text-3xl opacity-70 hover:opacity-100 transition px-2"
+        className="text-xl sm:text-2xl md:text-3xl opacity-70 hover:opacity-100 transition p-2"
       >
         &#8250;
       </button>

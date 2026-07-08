@@ -112,6 +112,15 @@ function MobileSidebar({ isOpen, closeMenu }) {
             <span>›</span>
           </Link>
 
+          <Link
+            to="/fg-surplus"
+            onClick={closeMenu}
+            className="flex justify-between items-center px-6 py-4 hover:bg-gray-100"
+          >
+            <span>FG Surplus</span>
+            <span>›</span>
+          </Link>
+
           
 
          
