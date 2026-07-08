@@ -94,6 +94,7 @@ function Navbar({ openMenu }) {
   onClick={() => setOpenSearch(true)}
 >
   <FaSearch size={18} />
+  
 </button>
 
         {/* Wishlist */}

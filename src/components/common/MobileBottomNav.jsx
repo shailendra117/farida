@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
-import { FaBoxOpen, FaTags, FaSearch, FaCalendarAlt, FaShoppingBag } from "react-icons/fa";
+import { FaBoxOpen, FaTags, FaSearch, FaCalendarAlt, FaShoppingBag, FaHome } from "react-icons/fa";
 
 const navItems = [
   {
@@ -14,9 +14,9 @@ const navItems = [
     icon: <FaTags className="w-6 h-6 mb-1" />,
   },
   {
-    label: "Search",
-    path: "/new-arrivals",
-    icon: <FaSearch className="w-6 h-6 mb-1" />,
+    label: "Home",
+    path: "/",
+    icon: <FaHome className="w-6 h-6 mb-1" />,
   },
   {
     label: "Exhibitions",
