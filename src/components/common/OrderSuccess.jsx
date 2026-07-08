@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const OrderSuccess = () => {
   return (
-    <section className="max-w-4xl mx-auto mt-20 px-5 py-20">
+    <section className="max-w-4xl h-[600px] mx-auto mt-20 px-5 ">
       <div className="rounded-[32px] border border-gray-200 bg-white p-10 text-center shadow-sm">
         <div className="mx-auto mb-8 flex h-15 w-15 items-center justify-center rounded-full text-[#eef2f4] text-2xl font-bold bg-[#0af00d]">
           ✓
@@ -13,7 +13,7 @@ const OrderSuccess = () => {
         </p>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Link
-            to="/"
+            to="/new-arrivals"
             className="inline-flex w-full items-center justify-center rounded-full bg-[#7B1D2A] px-6 py-3 text-sm font-semibold text-white hover:bg-[#5b151f] transition sm:w-auto"
           >
             Continue Shopping
