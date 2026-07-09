@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Heart } from "lucide-react";
 import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const ProductCard = ({ product, collection, badgeLabel }) => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
-
-  const [liked, setLiked] = useState(false);
+  const { items: wishlistItems, toggleWishlist, remove } = useWishlist();
   const [hover, setHover] = useState(false);
   const [selectedSize, setSelectedSize] = useState(product.sizes?.[0] || null);
 
@@ -60,14 +60,38 @@ const ProductCard = ({ product, collection, badgeLabel }) => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                setLiked(!liked);
+                const isWishlistPage = window.location.pathname === "/wishlist";
+                if (isWishlistPage) {
+                  // Remove irrespective of fromPage when user unlikes from wishlist page
+                  remove(product.id, selectedSize);
+                } else {
+                  toggleWishlist({ ...product, selectedSize, fromPage: window.location.pathname });
+                }
               }}
               className="bg-white p-2 rounded-full shadow-sm hover:scale-105 transition"
             >
               <Heart
                 size={18}
                 className={
-                  liked ? "fill-red-500 text-red-500" : "text-gray-600"
+                  (() => {
+                    const isWishlistPage = window.location.pathname === "/wishlist";
+                    if (isWishlistPage) {
+                      return wishlistItems.some(
+                        (p) => p.id === product.id && (p.selectedSize || null) === (selectedSize || null)
+                      )
+                        ? "fill-red-500 text-red-500"
+                        : "text-gray-600";
+                    }
+
+                    return wishlistItems.some(
+                      (p) =>
+                        p.id === product.id &&
+                        (p.selectedSize || null) === (selectedSize || null) &&
+                        (p.fromPage || null) === (window.location.pathname || null)
+                    )
+                      ? "fill-red-500 text-red-500"
+                      : "text-gray-600";
+                  })()
                 }
               />
             </button>

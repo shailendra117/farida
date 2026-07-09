@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Toaster } from "react-hot-toast";
 import ScrollToTop from "./components/home/ScrollToTop";
 import Home from "./components/pages/Home";
 import NewArrival from "./components/pages/NewArrival";
@@ -28,10 +29,13 @@ import FAQ from "./components/pages/FAQ";
 import Contact from "./components/pages/Contact";
 import NotFound from "./components/common/NotFound";
 import ProductDetails from "./components/Collection1/Productdetails";
+import Wishlist from "./components/pages/Wishlist";
+
 
 function App() {
   return (
     <>
+    <Toaster position="top-right" />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -54,6 +58,8 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact-us" element={<Contact />} />
 
+
+
           <Route path="/product/:id" element={<ProductDetails />} />
 
           <Route path="/new-arrivals" element={<NewArrival />} />
@@ -61,11 +67,12 @@ function App() {
           <Route path="/fg-bestseller" element={<FgBestSeller />} />
           <Route path="/fg-basics" element={<FgBasics />} />
           <Route path="/sale" element={<Sale />} />
+          <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/fg-surplus" element={<FGSurplus />} />
+          <Route path="/exhibitions" element={<Exhibitions />} />
           <Route path="/bag" element={<BagPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-success" element={<OrderSuccess />} />
-          <Route path="/exhibitions" element={<Exhibitions />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

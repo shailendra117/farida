@@ -24,8 +24,19 @@ export const WishlistProvider = ({ children }) => {
 
   const toggleWishlist = (product) => {
     setItems((prev) => {
-      const exists = prev.find((p) => p.id === product.id && p.selectedSize === product.selectedSize);
-      if (exists) return prev.filter((p) => !(p.id === product.id && p.selectedSize === product.selectedSize));
+      const exists = prev.find(
+        (p) =>
+          p.id === product.id &&
+          (p.selectedSize || null) === (product.selectedSize || null) &&
+          (p.fromPage || null) === (product.fromPage || null)
+      );
+
+      if (exists)
+        return prev.filter(
+          (p) =>
+            !(p.id === product.id && (p.selectedSize || null) === (product.selectedSize || null) && (p.fromPage || null) === (product.fromPage || null))
+        );
+
       return [...prev, product];
     });
   };

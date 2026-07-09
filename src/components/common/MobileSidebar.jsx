@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { FaRegHeart, FaRegUser } from "react-icons/fa";
+import { useWishlist } from "../../context/WishlistContext";
+import LoginModal from "../LoginPage/LoginModel";
 
 import logo from "../../assets/images/logo1.png";
 
 function MobileSidebar({ isOpen, closeMenu }) {
+  const [openLogin, setOpenLogin] = useState(false);
+  const { items: wishlistItems } = useWishlist();
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {

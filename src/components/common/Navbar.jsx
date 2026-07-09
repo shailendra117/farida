@@ -5,10 +5,12 @@ import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
 import SearchModal from "./SearchModal";
 import { useEffect, useState } from "react";
+import LoginModal from "../LoginPage/LoginModel";
 
 import logo from "../../assets/images/logo1.png";
 
 function Navbar({ openMenu }) {
+  const [openLogin, setOpenLogin] = useState(false);
   const { cartCount } = useCart();
   const { items: wishlistItems } = useWishlist();
   const [openSearch, setOpenSearch] = useState(false);
@@ -27,6 +29,13 @@ function Navbar({ openMenu }) {
   };
   return (
     <nav className="fixed top-11 left-0 right-0 z-50 bg-white border-b border-gray-100 px-4 sm:px-6 py-4 flex items-center justify-between">
+      {/* Hamburger */}
+        <button
+          onClick={openMenu}
+          className="rounded-full  p-2 text-gray-700 transition hover:bg-gray-100 hover:text-[#7B1D2A] lg:hidden"
+        >
+          <FaBars size={26}/>
+        </button>
       {/* Logo */}
       <Link to="/">
         <img
@@ -82,26 +91,22 @@ function Navbar({ openMenu }) {
       </ul>
 
       {/* Right Icons */}
-   <div className="flex items-center gap-2 text-gray-800 sm:gap-4 lg:gap-5">
-        {/* Currency */}
-        <span className=" hidden lg:flex items-center gap-1 text-xs font-medium tracking-wider">
-          ₹ INR
-        </span>
+      <div className="flex items-center gap-2 text-gray-800 sm:gap-4 lg:gap-5">
+       
 
         {/* Search */}
         <button
-  className="hidden md:flex rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]"
-  onClick={() => setOpenSearch(true)}
->
-  <FaSearch size={18} />
-  
-</button>
+          className="hidden md:flex rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]"
+          onClick={() => setOpenSearch(true)}
+        >
+          <FaSearch size={18} />
+        </button>
 
         {/* Wishlist */}
         <Link
-  to="/wishlist"
-  className="relative hidden md:flex rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]"
->
+          to="/wishlist"
+          className="relative hidden md:flex rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]"
+        >
           <FaRegHeart size={20} />
           {wishlistItems.length > 0 && (
             <span className="absolute -top-2 -right-3 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#7B1D2A] px-1.5 text-[10px] font-semibold text-white">
@@ -111,15 +116,18 @@ function Navbar({ openMenu }) {
         </Link>
 
         {/* Account */}
-        <button className="relative hidden md:flex rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]">
-          <FaRegUser size={20} />
+        <button
+          onClick={() => setOpenLogin(true)}
+          className="relative  rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]"
+        >
+          <FaRegUser size={22} />
         </button>
 
         {/* Cart */}
         <Link
-  to="/bag"
-  className="relative rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]"
->
+          to="/bag"
+          className="relative hidden md:flex rounded-full p-2 transition hover:bg-gray-100 hover:text-[#7B1D2A]"
+        >
           <FiShoppingBag size={20} />
           {cartCount > 0 && (
             <span className="absolute -top-2 -right-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#7B1D2A] px-1.5 text-[10px] font-semibold text-white">
@@ -128,15 +136,13 @@ function Navbar({ openMenu }) {
           )}
         </Link>
 
-        {/* Hamburger */}
-        <button
-    onClick={openMenu}
-    className="rounded-full p-2 text-gray-800 transition hover:bg-gray-100 hover:text-[#7B1D2A] lg:hidden">
-          <FaBars size={26} />
-        </button>
-      
-      {openSearch && <SearchModal onClose={handleCloseSearch} onSearch={handleSearch} />}
+        
+
+        {openSearch && (
+          <SearchModal onClose={handleCloseSearch} onSearch={handleSearch} />
+        )}
       </div>
+      <LoginModal open={openLogin} onClose={() => setOpenLogin(false)} />
     </nav>
   );
 }

@@ -35,9 +35,9 @@ const ProductGrid = ({ products, collection, badgeLabel }) => {
           xl:gap-10
         "
       >
-        {products.map((product) => (
+        {products.map((product, index) => (
           <ProductCard
-            key={product.id}
+            key={`${product.id}-${index}`}
             product={product}
             collection={collection}
             badgeLabel={badgeLabel}

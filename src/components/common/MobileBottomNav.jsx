@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
-import { FaBoxOpen, FaTags, FaSearch, FaCalendarAlt, FaShoppingBag, FaHome } from "react-icons/fa";
+import { useWishlist } from "../../context/WishlistContext";
+import { FaBoxOpen, FaMapSigns,   FaShoppingBag, FaHome, FaRegHeart} from "react-icons/fa";
 
 const navItems = [
   {
@@ -9,9 +10,9 @@ const navItems = [
     icon: <FaBoxOpen className="w-6 h-6 mb-1" />,
   },
   {
-    label: "Sale",
-    path: "/sale",
-    icon: <FaTags className="w-6 h-6 mb-1" />,
+    label: "Exhibition",
+    path: "/exhibitions",
+    icon: <FaMapSigns className="w-6 h-6 mb-1" />,
   },
   {
     label: "Home",
@@ -19,9 +20,9 @@ const navItems = [
     icon: <FaHome className="w-6 h-6 mb-1" />,
   },
   {
-    label: "Exhibitions",
-    path: "/exhibitions",
-    icon: <FaCalendarAlt className="w-6 h-6 mb-1" />,
+    label: "Wishlist",
+    path: "/wishlist",
+    icon: <FaRegHeart className="w-6 h-6 mb-1" />,
   },
   {
     label: "Bag",
@@ -33,9 +34,10 @@ const navItems = [
 export default function MobileBottomNav() {
   const location = useLocation();
   const { cartCount } = useCart();
+  const { items: wishlistItems } = useWishlist();
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg sm:hidden">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg md:hidden">
       <div className="grid grid-cols-5 h-14">
         {navItems.map((item) => {
           const isActive = location.pathname === item.path;
@@ -52,6 +54,11 @@ export default function MobileBottomNav() {
               {item.label === "Bag" && cartCount > 0 && (
                 <span className="absolute -top-1 right-6 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#7B1D2A] px-1 text-[9px] font-semibold text-white">
                   {cartCount}
+                </span>
+              )}
+              {item.label === "Wishlist" && wishlistItems.length > 0 && (
+                <span className="absolute -top-1 right-6 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#7B1D2A] px-1 text-[9px] font-semibold text-white">
+                  {wishlistItems.length}
                 </span>
               )}
             </Link>
