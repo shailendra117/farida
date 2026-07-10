@@ -38,7 +38,7 @@ export default function Footer() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-gray-700 hover:text-[#7B1D2A]"
+                    className="text-gray-700 hover:text-black"
                   >
                     {link.label}
                   </Link>
@@ -82,13 +82,13 @@ export default function Footer() {
               {discoverLinks.map((link) => (
                 <li key={link.label}>
                   {link.to === "#" ? (
-                    <a href="#" className="  hover:text-[#7B1D2A]">
+                    <a href="#" className="  hover:text-black ">
                       {link.label}
                     </a>
                   ) : (
                     <Link
                       to={link.to}
-                      className="sm:text-md text-gray-700 hover:text-[#7B1D2A]"
+                      className="sm:text-sm text-gray-700 hover:text-black hover:font-medium"
                     >
                       {link.label}
                     </Link>
@@ -109,7 +109,7 @@ export default function Footer() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="sm:text-md text-gray-700 hover:text-[#7B1D2A] transition-colors"
+                    className="sm:text-sm text-gray-700 hover:text-black hover:font-medium transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -212,7 +212,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-6 text-sm sm:text-base break-words">
               <div className="space-y-1">
-                <p className=" text-sm font-semibold mb-2">
+                <p className=" text-sm text-gray-800 font-medium mb-2">
                   For Product Queries:
                 </p>
                 <p className="text-sm text-gray-700">
@@ -236,7 +236,7 @@ export default function Footer() {
                 <p className="text-sm text-gray-700">Monday – Saturday</p>
               </div>
               <div>
-                <p className="  text-sm font-semibold mb-2">
+                <p className="  text-sm text-gray-800 font-medium mb-2">
                   For Careers & HR Related Queries:
                 </p>
                 <p className="text-sm text-gray-700">

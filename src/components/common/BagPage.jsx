@@ -4,7 +4,9 @@ import { useState } from "react";
 import Announcement from "../common/AnnouncementBar";
 import Navbar from "../common/Navbar";
 import MobileSidebar from "../common/MobileSidebar";
+import Footer from "../common/Footer"
 import MobileBottomNav from "../common/MobileBottomNav";
+import cartBg from "../../assets/images/bagimg.jpg"
 
 const BagPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,17 +17,29 @@ const BagPage = () => {
     <Announcement />
     <Navbar openMenu={() => setIsOpen(true)} />
     <MobileSidebar isOpen={isOpen} closeMenu={() => setIsOpen(false)} />
-    <section className="max-w-6xl mx-auto px-5 py-10 mt-20">
-      <h1 className="text-2xl font-semibold text-[#3c2a21] mb-6">Your Bag</h1>
+    <section className="max-w-8xl mx-auto px-5 py-10 mt-22">
 
       {cartItems.length === 0 ? (
-        <div className="rounded-3xl border border-dashed border-gray-300 bg-[#fdf7f2] p-12 text-center text-gray-600">
-          <h2 className="text-xl font-semibold text-[#3c2a21] mb-3">Your bag is empty</h2>
-          <p className="mb-6">Add products to your bag and they will appear here.</p>
-          <Link to="/new-arrivals" className="inline-flex rounded-full bg-[#7B1D2A] px-6 py-3 text-white text-sm font-semibold hover:bg-[#5b151f] transition">
-            Continue Shopping 
-          </Link>
-        </div>
+        <div
+  className="relative h-[550px] w-full bg-cover bg-center flex items-center justify-center"
+  style={{ backgroundImage: `url(${cartBg})` }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/25"></div>
+
+  {/* Text */}
+  <div className="relative z-10 text-center text-white">
+    <h2 className="text-3xl font-light">
+      You have no items in your shopping cart.
+    </h2>
+
+    <p className="mt-4 text-lg">
+      Click  <Link to="/new-arrivals" className="  underline transition text-lg  ">
+          here
+      </Link> to continue shopping.
+    </p>
+  </div>
+       </div>
       ) : (
         <div className="grid gap-8 lg:grid-cols-[2fr_1fr]">
           <div className="space-y-4">
@@ -120,7 +134,7 @@ const BagPage = () => {
         </div>
       )}
     </section>
-    {/* <Footer /> */}
+    <Footer />
     <MobileBottomNav />
     </>
   );

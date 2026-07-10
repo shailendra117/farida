@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import {Link, NavLink, useNavigate } from "react-router-dom";
 import { FaSearch, FaRegHeart, FaRegUser, FaBars } from "react-icons/fa";
 import { FiShoppingBag } from "react-icons/fi";
 import { useCart } from "../../context/CartContext";
@@ -28,7 +28,7 @@ function Navbar({ openMenu }) {
     navigate(`/new-arrivals?search=${encodeURIComponent(q)}`);
   };
   return (
-    <nav className="fixed top-11 left-0 right-0 z-50 bg-white border-b border-gray-100 px-4 sm:px-6 py-4 flex items-center justify-between">
+    <nav className="fixed top-11 left-0 right-0 z-50 bg-white border-b border-gray-100 px-4 sm:px-6 py-2 flex items-center justify-between">
       {/* Hamburger */}
         <button
           onClick={openMenu}
@@ -37,61 +37,61 @@ function Navbar({ openMenu }) {
           <FaBars size={26}/>
         </button>
       {/* Logo */}
-      <Link to="/">
+      <NavLink to="/">
         <img
           src={logo}
           alt="Logo"
           className="h-auto w-28 transition-all duration-300 sm:w-32 md:w-36 lg:w-44 xl:w-48"
         />
-      </Link>
+      </NavLink>
 
       {/* Desktop Menu */}
-      <ul className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs xl:text-sm uppercase  tracking-wide">
+      <ul className="hidden lg:flex items-center gap-4 text-black text-sm font-medium  tracking-wide">
         <li>
-          <Link to="/new-arrivals" className="hover:text-[#7B1D2A]">
+          <NavLink to="/new-arrivals" className="hover:text-[#7B1D2A]">
             New Arrivals
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link to="/fg-woman" className="hover:text-[#7B1D2A]">
+          <NavLink to="/fg-woman" className="hover:text-[#7B1D2A]">
             FG Woman
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link to="/fg-bestseller" className="hover:text-[#7B1D2A]">
+          <NavLink to="/fg-bestseller" className="hover:text-[#7B1D2A]">
             FG Bestsellers
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link to="/fg-basics" className="hover:text-[#7B1D2A]">
+          <NavLink to="/fg-basics" className="hover:text-[#7B1D2A]">
             FG Basics
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link to="/sale" className="hover:text-[#7B1D2A]">
+          <NavLink to="/sale" className="hover:text-[#7B1D2A]">
             Sale
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link to="/fg-surplus" className="hover:text-[#7B1D2A]">
+          <NavLink to="/fg-surplus" className="hover:text-[#7B1D2A]">
             FG Surplus
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link to="/exhibitions" className="hover:text-[#7B1D2A]">
+          <NavLink to="/exhibitions" className="hover:text-[#7B1D2A]">
             Exhibitions
-          </Link>
+          </NavLink>
         </li>
       </ul>
 
       {/* Right Icons */}
-      <div className="flex items-center gap-2 text-gray-800 sm:gap-4 lg:gap-5">
+      <div className="flex items-center gap-2 text-gray-800 md:gap-2 lg:gap-3">
        
 
         {/* Search */}

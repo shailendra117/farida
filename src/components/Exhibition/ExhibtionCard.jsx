@@ -48,22 +48,22 @@ const ExhibitionCard = ({ item, onNotify }) => {
         {item.time}
       </p>
 
-      <div className="inline-block text-xs bg-gray-100 px-5 py-2 mt-3">
+      <div className="inline-block text-sm bg-gray-100 px-5 py-2 mt-3">
         {item.venue}
       </div>
 
-      <p className="mt-8 text-xs text-gray-700 max-w-3xl mx-auto">
+      <p className="mt-8 text-sm text-gray-700 max-w-3xl mx-auto">
         {item.address}
       </p>
 
       <div className="flex justify-center gap-5 mt-5">
 
-        <button onClick={() => window.open(item.mapLink, "_blank")} className="flex items-center text-xs gap-2 bg-[#7d1d28] text-white px-6 py-2  rounded-full" target="_blank">
+        <button onClick={() => window.open(item.mapLink, "_blank")} className="flex items-center text-sm gap-2 bg-[#7d1d28] hover:bg-[#6b1722] text-white px-4 py-2 md:px-6 md:py-3  rounded-full cursor-pointer" target="_blank">
           <MapPin size={12} />
           Directions
         </button>
 
-        <button onClick={() => onNotify(item.city)} className="border text-xs border-[#7d1d28] text-[#7d1d28] px-6 py-2 rounded-full">
+        <button onClick={() => onNotify(item.city)} className="border text-sm border-[#7d1d28] text-[#7d1d28] px-4 py-2  md:px-6 md:py-3  rounded-full cursor-pointer">
           Notify Me
         </button>
 

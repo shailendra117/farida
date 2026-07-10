@@ -1,18 +1,18 @@
 export const exhibitions = [
   {
     id: 1,
-    city: "Ahmedabad",
-    startDate: "03",
-    startDay: "Friday",
-    endDate: "05",
+    city: "Ghaziabad",
+    startDate: "11",
+    startDay: "Saturday",
+    endDate: "12",
     endDay: "Sunday",
     month: "JULY",
     time: "10 AM - 8 PM",
-    venue: "GALLERY ONE O FIVE",
+    venue: "GOLDEN RIVAAH BANQUET",
     address:
-      "Shop No.110, First Floor, Shilp Savera, Opp. Sindhu Bhawan, Bodakdev, Ahmedabad, Gujarat 380059",
+      "Pearl Apartment Commercial Tower, Cs-19, opp. to shipra Riviera, Gyan Khand 2, Indirapuram, Ghaziabad, Uttar Pradesh 201014",
     mapLink:
-      "https://www.google.com/maps/search/?api=1&query=Gallery+One+O+Five+Ahmedabad",
+      "https://maps.app.goo.gl/TdnHaZHWJGi9qkNu6",
   },
 
   {
@@ -23,107 +23,152 @@ export const exhibitions = [
     endDate: "12",
     endDay: "Sunday",
     month: "JULY",
-    time: "11 AM - 7 PM",
-    venue: "THE IMPERIAL CLUB",
+    time: "11 AM - 8 PM",
+    venue: "ROYAL PARK HALL",
     address:
-      "Pocket 9, Sector B, Vasant Kunj, New Delhi, Delhi 110070",
+      "Near Post Office, Greater Kailash - 2, Masjid Moth, Greater Kailash, New Delhi, Delhi 110048",
     mapLink:
-      "https://www.google.com/maps/search/?api=1&query=The+Imperial+Club+Vasant+Kunj+Delhi",
+      "https://maps.app.goo.gl/jtgBnjoX3TwV5Yty6",
   },
 
   {
     id: 3,
-    city: "Mumbai",
+    city: "Jalandhar",
     startDate: "17",
     startDay: "Friday",
     endDate: "19",
     endDay: "Sunday",
     month: "JULY",
     time: "10 AM - 8 PM",
-    venue: "NSCI DOME",
+    venue: "RAMADA BY WYNDHAM JALANDHAR CITY CENTRE",
     address:
-      "Worli Sports Club, Lala Lajpatrai Marg, Worli, Mumbai, Maharashtra 400018",
+      "Nam Dev Chowk, G.T. Road, Sehdev Market, Jalandhar, Punjab 144001",
     mapLink:
-      "https://www.google.com/maps/search/?api=1&query=NSCI+Dome+Worli+Mumbai",
+      "https://maps.app.goo.gl/r2pmyHoEL1pNTffv5",
   },
 
   {
     id: 4,
-    city: "Jaipur",
+    city: "Delhi",
     startDate: "24",
     startDay: "Friday",
     endDate: "26",
     endDay: "Sunday",
     month: "JULY",
     time: "10 AM - 6 PM",
-    venue: "BIRLA AUDITORIUM",
+    venue: "AGA KHAN HALL",
     address:
-      "Statue Circle, C Scheme, Jaipur, Rajasthan 302001",
+      "Bhagwan Das Lane, Mandi House, New Delhi, Delhi 110001",
     mapLink:
-      "https://www.google.com/maps/search/?api=1&query=Birla+Auditorium+Jaipur",
+      "https://maps.app.goo.gl/g42BQmtW2KZ4iuoa8",
   },
 
   {
     id: 5,
-    city: "Bengaluru",
+    city: "Ludhiana",
     startDate: "07",
     startDay: "Friday",
     endDate: "09",
     endDay: "Sunday",
     month: "AUGUST",
     time: "10 AM - 8 PM",
-    venue: "PALACE GROUNDS",
+    venue: "REGENTA CENTRAL KLASSIK",
     address:
-      "Jayamahal Main Road, Bengaluru, Karnataka 560006",
+      "Link Rd, Model Town, Ludhiana, Punjab 141002",
     mapLink:
-      "https://www.google.com/maps/search/?api=1&query=Palace+Grounds+Bengaluru",
+      "https://maps.app.goo.gl/fVQUmmg81NxvdLzs6",
   },
 
   {
     id: 6,
-    city: "Hyderabad",
+    city: "Chandigarh",
     startDate: "14",
     startDay: "Friday",
     endDate: "16",
     endDay: "Sunday",
     month: "AUGUST",
     time: "11 AM - 8 PM",
-    venue: "HITEX EXHIBITION CENTER",
+    venue: "HOTEL AROMA",
     address:
-      "Izzathnagar, Kondapur, Hyderabad, Telangana 500084",
+      "Himalaya Marg, Sector 22C, Sector 22, Chandigarh, 160022",
     mapLink:
-      "https://www.google.com/maps/search/?api=1&query=HITEX+Exhibition+Center+Hyderabad",
+      "https://maps.app.goo.gl/4ojbeMUALzzJELQj9",
   },
 
   {
     id: 7,
-    city: "Chandigarh",
+    city: "Guragram",
     startDate: "21",
     startDay: "Friday",
     endDate: "23",
     endDay: "Sunday",
     month: "AUGUST",
     time: "10 AM - 7 PM",
-    venue: "HOTEL MOUNTVIEW",
+    venue: "THE PALACE",
     address:
-      "Sector 10, Chandigarh 160011",
+      "Plot No.290-291, Sector 29, Gurugram, Haryana 122001",
     mapLink:
-      "https://www.google.com/maps/search/?api=1&query=Hotel+Mountview+Chandigarh",
+      "https://maps.app.goo.gl/CmcUFJbgxWZ7vi7E6",
   },
 
   {
     id: 8,
-    city: "Pune",
+    city: "Dehradun",
     startDate: "28",
     startDay: "Friday",
     endDate: "30",
     endDay: "Sunday",
     month: "AUGUST",
     time: "10 AM - 8 PM",
-    venue: "AUTO CLUSTER EXHIBITION CENTRE",
+    venue: "HOTEL MADHUBAN",
     address:
-      "Chinchwad, Pune, Maharashtra 411019",
+      "97, Rajpur Rd, Chander Lok Colony, Hathibarkala Salwala, Dehradun, Uttarakhand 248001",
     mapLink:
-      "https://www.google.com/maps/search/?api=1&query=Auto+Cluster+Exhibition+Centre+Pune",
+      "https://maps.app.goo.gl/FoT15qU1UtY9g9r38",
+  },
+  {
+    id: 9,
+    city: "Gurugram",
+    startDate: "07",
+    startDay: "Friday",
+    endDate: "09",
+    endDay: "Sunday",
+    month: "AUGUST",
+    time: "10 AM - 8 PM",
+    venue: "CLUB SOUTH PATIO",
+    address:
+      "Block-D, South City 2, Sector 50, Gurugram, Haryana 122018",
+    mapLink:
+      "https://maps.app.goo.gl/kXsWDijY9raBPxQA9",
+  },
+  {
+    id: 10,
+    city: "Noida",
+    startDate: "07",
+    startDay: "Friday",
+    endDate: "09",
+    endDay: "Sunday",
+    month: "AUGUST",
+    time: "10 AM - 8 PM",
+    venue: "BELLMONT HOTEL ",
+    address:
+      "14/1, opp. Botanical Garden Metro Station, Harijan Basti, Arun Vihar, Sector 37, Noida, Uttar Pradesh 201303",
+    mapLink:
+      "https://maps.app.goo.gl/FoT15qU1UtY9g9r38",
+  },
+  {
+    id: 11,
+    city: "Gurugram",
+    startDate: "28",
+    startDay: "Friday",
+    endDate: "30",
+    endDay: "Sunday",
+    month: "AUGUST",
+    time: "10 AM - 8 PM",
+    venue: "CLUB SOUTH PATIO",
+    address:
+      "Block-D, South City 2, Sector 50, Gurugram, Haryana 122018",
+    mapLink:
+      "https://maps.app.goo.gl/ChFu1MGyq7NGPPnJ9",
   },
 ];

@@ -5,7 +5,7 @@ function AnnouncementBar() {
     "New Launches Every Thursday, 11 AM IST",
     <>
       We're coming to your city. Shop offline |{" "}
-      <a href="#" className="underline">
+      <a href="/exhibitions" className="underline">
         View Exhibitions
       </a>
     </>,
