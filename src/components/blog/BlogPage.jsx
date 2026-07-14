@@ -8,7 +8,7 @@ const BlogPage = () => {
 
       <div className="max-w-7xl mx-auto px-5">
 
-        <h2 className="text-center text-5xl font-serif mb-16 mt-12  text-[#4a2d24]">
+        <h2 className="text-center text-5xl font-serif mb-16 mt-8  text-[#4a2d24]">
           Our Blogs
         </h2>
        

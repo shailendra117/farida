@@ -17,7 +17,7 @@ const BagPage = () => {
     <Announcement />
     <Navbar openMenu={() => setIsOpen(true)} />
     <MobileSidebar isOpen={isOpen} closeMenu={() => setIsOpen(false)} />
-    <section className="max-w-8xl mx-auto px-5 py-10 mt-22">
+    <section className="max-w-8xl mx-auto px-5 py-10  mt-8 lg:mt-28">
 
       {cartItems.length === 0 ? (
         <div

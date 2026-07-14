@@ -22,7 +22,7 @@ const Exhibitions = () => {
     });
   };
   return (
-    <section className="bg-gray-100 py-10 mt-20">
+    <section className="bg-gray-100 py-10 mt-8">
 
       <div className="max-w-8xl mx-auto px-5">
         <p className="text-xs text-gray-700  py-3">Home/Exhibtions</p>

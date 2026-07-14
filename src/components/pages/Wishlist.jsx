@@ -17,7 +17,7 @@ export default function Wishlist() {
       <Navbar openMenu={() => setIsOpen(true)} />
       <MobileSidebar isOpen={isOpen} closeMenu={() => setIsOpen(false)} />
 
-      <section className="w-full max-w-8xl mx-auto px-4 sm:px-5 py-10 mt-24 lg:mt-28">
+      <section className="w-full max-w-8xl mx-auto px-4 sm:px-5 py-10 mt-8 lg:mt-28">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold text-[#3c2a21]">

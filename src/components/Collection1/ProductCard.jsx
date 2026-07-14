@@ -15,6 +15,20 @@ const ProductCard = ({ product, collection, badgeLabel }) => {
   // Notification state
   const [showNotification, setShowNotification] = useState(false);
 
+  const handleBuyNow = (e) => {
+    e.stopPropagation();
+
+    const checkoutProduct = {
+      ...product,
+      selectedSize,
+      quantity: 1,
+    };
+
+    addToCart(checkoutProduct);
+    localStorage.setItem("checkoutProduct", JSON.stringify(checkoutProduct));
+    navigate("/checkout", { state: { product: checkoutProduct } });
+  };
+
   return (
     <>
       <motion.div
@@ -128,19 +142,17 @@ const ProductCard = ({ product, collection, badgeLabel }) => {
         {/* Product Details */}
         <div className="p-5">
           <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
+            
+            <div className="min-w-0 ">
               <h3 className="text-lg font-semibold text-[#3c2a21] truncate">
                 {product.name}
               </h3>
 
-              <p className="text-sm text-gray-500 mt-1">{product.craft}</p>
-
-              <div className="flex items-center gap-3 mt-3">
-                {/* <span className="rounded-full hidden md:block border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium">
-                  {product.color}
-                </span> */}
-
-                <div className="flex items-center gap-2 flex-wrap lg:flex-nowrap">
+             
+                 
+              <div className="flex items-center gap-3 ">
+               
+                <div className="flex items-center gap-1 mt-2 flex-wrap lg:flex-nowrap">
                   {product.sizes.map((s) => (
                     <button
                       key={s}
@@ -162,12 +174,19 @@ const ProductCard = ({ product, collection, badgeLabel }) => {
                   ))}
                 </div>
               </div>
+
+               {/* <p className="text-sm text-gray-500 ">{product.craft}</p> */}
+                  <p className="text-xl text-[#3c2a21] mt-2">
+                 ₹{product.price}
+                 </p>
+
+                
+                 <button onClick={(e) => handleBuyNow(e)} className="cursor-pointer bg-[#7B1D2A] mt-3 px-4 py-2 border rounded-2xl  text-white">Buy Now</button>
             </div>
 
-            <p className="text-lg text-[#3c2a21]">
-              ₹{product.price}
-            </p>
+            
           </div>
+          
         </div>
       </motion.div>
 

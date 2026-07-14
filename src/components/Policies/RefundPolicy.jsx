@@ -7,7 +7,7 @@ const RefundPolicy = () => {
       window.scrollTo(0, 0);
     }, []);
   return (
-    <section className="max-w-7xl mx-auto px-5 py-10 mt-20">
+    <section className="max-w-7xl mx-auto px-5 py-10 mt-8">
 
       {/* Breadcrumb */}
      

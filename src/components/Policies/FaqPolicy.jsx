@@ -16,7 +16,7 @@ export default function FaqPolicy() {
   };
 
   return (
-    <section className="max-w-3xl mx-auto py-12 px-5 mt-20">
+    <section className="max-w-3xl mx-auto py-12 px-5 mt-8">
 
       {/* Tabs */}
 

@@ -32,6 +32,7 @@ import ProductDetails from "./components/Collection1/Productdetails";
 import Wishlist from "./components/pages/Wishlist";
 
 
+
 function App() {
   return (
     <>

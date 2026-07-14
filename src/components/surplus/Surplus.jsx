@@ -81,28 +81,28 @@ const Surplus = () => {
 
   return (
     <>
-      <section className="max-w-8xl mx-auto px-5 py-10 mt-20">
+      <section className="max-w-8xl mx-auto px-4 sm:px-5 py-10 mt-8 lg:mt-28">
 
-         <div className="flex items-center justify-between mb-8">
+         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
           <div>
-            <h2 className="text-xl font-semibold text-[#3c2a21]">
+            <h2 className="text-xl sm:text-2xl font-semibold text-[#3c2a21]">
               Discover Surplus
             </h2>
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-500 text-sm mt-1">
               {filteredProducts.length} products available
             </p>
           </div>
 
           <button
             onClick={() => setShowMobileFilter(true)}
-            className=" block lg:hidden flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-semibold text-gray-700 hover:border-[#7b1e2b] hover:text-[#7b1e2b] transition"
+            className="block lg:hidden w-full sm:w-auto flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-semibold text-gray-700 hover:border-[#7b1e2b] hover:text-[#7b1e2b] transition"
           >
             <SlidersHorizontal size={18} />
             Filters
           </button>
         </div>
 
-        <div className="grid grid-cols-12 gap-10">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10">
           {/* Desktop Sidebar */}
           <div className="hidden lg:block lg:col-span-3">
             <FilterSidebar filters={filters} handleFilter={handleFilter} />
@@ -129,7 +129,7 @@ const Surplus = () => {
           ></div>
 
           {/* Drawer */}
-          <div className="fixed top-0 left-0 h-screen w-80 bg-white z-50 shadow-xl overflow-y-auto">
+          <div className="fixed top-0 left-0 h-screen w-full max-w-[90vw] sm:max-w-[420px] bg-white z-50 shadow-xl overflow-y-auto">
             <div className="flex justify-between items-center p-5 border-b">
               <h2 className="text-xl font-semibold">Filters</h2>
 

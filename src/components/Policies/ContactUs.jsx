@@ -48,7 +48,7 @@ const ContactUs = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-16">
-      <div className="grid lg:grid-cols-2 gap-25 mt-20">
+      <div className="grid lg:grid-cols-2 gap-25 mt-8">
         {/* Left Side */}
         <div>
           <h2 className="text-lg text-center text-[#7B1D2A] font-serif mb-10 uppercase">

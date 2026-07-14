@@ -28,7 +28,7 @@ function AnnouncementBar() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-[#E8C167] text-black flex items-center justify-between px-3 sm:px-5 lg:px-8  ">
+    <div className=" hidden lg:flex fixed top-0 left-0 right-0 z-50 bg-[#E8C167] text-black flex items-center justify-between px-3 sm:px-5 lg:px-8  ">
       {/* Left Arrow */}
       <button
         onClick={() => changeAnnouncement(-1)}

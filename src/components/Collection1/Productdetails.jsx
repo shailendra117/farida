@@ -1,7 +1,10 @@
+
+import { useNavigate } from "react-router-dom";
 import { useParams, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../../context/CartContext";
 import { motion } from "framer-motion";
+
 import products from "../../data/products";
 import ProductSlider from "../Collection1/ProductSlider";
 import Announcement from "../common/AnnouncementBar";
@@ -12,6 +15,7 @@ import AnnouncementBar from "../common/AnnouncementBar";
 import MobileBottomNav from "../common/MobileBottomNav";
 
 export default function ProductDetails() {
+    const navigate = useNavigate();
   const location = useLocation();
 
   const allProducts = location.state?.collection || products;
@@ -37,6 +41,19 @@ export default function ProductDetails() {
 
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
 
+  
+  
+const handleBuyNow = () => {
+  const checkoutProduct = {
+    ...product,
+    selectedSize,
+    quantity: 1,
+  };
+
+  addToCart(checkoutProduct);
+  localStorage.setItem("checkoutProduct", JSON.stringify(checkoutProduct));
+  navigate("/checkout", { state: { product: checkoutProduct } });
+};
   return (
     <>
       <Announcement />
@@ -119,7 +136,7 @@ export default function ProductDetails() {
 
             {/* THUMBNAILS */}
 
-            <div className="mt-8">
+            <div className="mt-6">
               <p className="font-medium mb-3">Images</p>
 
               <div className="flex gap-3">
@@ -137,16 +154,16 @@ export default function ProductDetails() {
               </div>
             </div>
 
-            <p className="text-xl font-semibold mt-4 text-[#3c2a21]">
+            <p className="text-xl font-semibold mt-3 text-[#3c2a21]">
               ₹{product.price}
             </p>
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-xs text-gray-500 mt-1">
               ( Incl. of all taxes ) Shipping calculated at checkout.
             </p>
 
             {/* SIZE */}
 
-            <div className="mt-8">
+            <div className="mt-6">
               <p className="font-medium mb-4">Select Size</p>
 
               <div className="flex flex-wrap gap-3">
@@ -181,10 +198,12 @@ export default function ProductDetails() {
                   setShowNotification(false);
                 }, 5000);
               }}
-              className="w-full mt-10 bg-[#7B1D2A] hover:bg-[#641824] text-white py-4 rounded-full font-medium transition cursor-pointer"
+              className="w-full mt-8 bg-[#7B1D2A] hover:bg-[#641824] text-white py-4 rounded-full font-medium transition cursor-pointer"
             >
               Add To Bag
             </button>
+            <button onClick={handleBuyNow}  className="w-full mt-4 bg-[#7B1D2A] hover:bg-[#641824] text-white py-4 rounded-full font-medium transition cursor-pointer"
+           >Buy Now</button>
           </motion.div>
         </div>
       </section>

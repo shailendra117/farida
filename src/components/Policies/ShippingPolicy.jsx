@@ -4,7 +4,7 @@ const ShippingPolicy = () => {
       window.scrollTo(0, 0);
     }, []);
   return (
-    <section className="max-w-7xl mx-auto mt-22 px-5 py-10">
+    <section className="max-w-7xl mx-auto mt-8 px-5 py-10">
 
       {/* Breadcrumb */}
       

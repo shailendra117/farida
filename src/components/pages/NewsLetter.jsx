@@ -85,7 +85,7 @@ const NewsLetter = () => {
     <section className="bg-[#f5f5f5] min-h-screen flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-2xl">
         {/* Heading */}
-        <h2 className="text-center text-2xl md:text-3xl font-serif text-[#4a2d24] mb-12 mt-12 uppercase tracking-wide">
+        <h2 className="text-center text-2xl md:text-3xl font-serif text-[#4a2d24] mb-12 mt-8 uppercase tracking-wide">
           FG Subscription, Never Miss An Update!
         </h2>
 

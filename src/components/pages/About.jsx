@@ -12,7 +12,7 @@ export default function About() {
   return (
     
     
-    <div className="px-4 sm:px-8 mt-25 lg:px-16 py-10 max-w-6xl mx-auto space-y-16 sm:space-y-20">
+    <div className="px-4 sm:px-8 mt-8 lg:px-16 py-10 max-w-6xl mx-auto space-y-16 sm:space-y-20">
       
  <div>
   <p className="text-xs text-gray-500 p-2"><a href="/">Home/ </a><span>About Us</span></p>

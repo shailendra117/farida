@@ -28,7 +28,7 @@ function Navbar({ openMenu }) {
     navigate(`/new-arrivals?search=${encodeURIComponent(q)}`);
   };
   return (
-    <nav className="fixed top-11 left-0 right-0 z-50 bg-white border-b border-gray-100 px-4 sm:px-6 py-2 flex items-center justify-between">
+    <nav className="fixed top-0 lg:top-11 left-0 right-0 z-50 bg-white border-b border-gray-100 px-4 sm:px-6 py-2 flex items-center justify-between">
       {/* Hamburger */}
         <button
           onClick={openMenu}

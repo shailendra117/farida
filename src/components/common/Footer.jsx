@@ -126,7 +126,7 @@ export default function Footer() {
             <ul className="space-y-2 sm:text-md text-gray-700">
               <li>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/faridaguptaclothing/"
                   className="flex items-center gap-3   hover:text-[#7B1D2A]"
                 >
                   <svg
@@ -141,7 +141,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://in.pinterest.com/faridaguptaclothing/"
                   className="flex items-center gap-3  hover:text-[#7B1D2A]"
                 >
                   <svg
@@ -156,7 +156,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/faridagupta/"
                   className="flex items-center gap-3  hover:text-[#7B1D2A]"
                 >
                   <svg
@@ -173,7 +173,8 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://x.com/faridagupta?lang=en"
+                  target="_blank"
                   className="flex items-center gap-3  hover:text-[#7B1D2A]"
                 >
                   <svg
@@ -188,7 +189,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://www.youtube.com/channel/UCHXsdoArDBg0xS257C3DJHA"
                   className="flex items-center gap-3  hover:text-[#7B1D2A]"
                 >
                   <svg

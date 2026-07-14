@@ -103,7 +103,7 @@ const Collection = () => {
   return (
     <>
       
-      <section className="w-full max-w-8xl mx-auto px-4 sm:px-5 py-10 mt-24 lg:mt-28">
+      <section className="w-full max-w-8xl mx-auto px-4 sm:px-5 py-10 mt-8 lg:mt-28">
          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold text-[#3c2a21]">
