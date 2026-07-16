@@ -1,0 +1,11 @@
+.env
+backend/.env
+node_modules/
+backend/node_modules/
+dist/
+.DS_Store
+.vscode/
+.vercel/
+*.log
+*.local
+.git/

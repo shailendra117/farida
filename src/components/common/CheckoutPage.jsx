@@ -123,134 +123,54 @@ const CheckoutPage = () => {
     : 0;
 
   const handlePlaceOrder = async () => {
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setProcessing(true);
 
     try {
-      // 1. CREATE RAZORPAY ORDER
-      const orderResponse = await fetch("http://localhost:5000/create-order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          amount: checkoutTotal,
-        }),
-      });
-
-      const orderData = await orderResponse.json();
-
-      if (!orderData.success) {
-        throw new Error("Razorpay order creation failed");
-      }
-
-      // 2. RAZORPAY OPTIONS
-      const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-        amount: orderData.order.amount,
-        currency: "INR",
-        name: "Your Store",
-        description: "Order Payment",
-        order_id: orderData.order.id,
-
-        handler: async function (response) {
-          try {
-            // 3. VERIFY PAYMENT
-            const verifyResponse = await fetch("http://localhost:5000/verify-payment", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: response.razorpay_signature,
-              }),
-            });
-
-            const verifyData = await verifyResponse.json();
-
-            if (!verifyData.success) {
-              throw new Error("Payment verification failed");
-            }
-
-            console.log("Payment Verified");
-
-            let shippingError = null;
-            let shiprocketOrderId = null;
-            let shipmentId = null;
-
-            try {
-              const shiprocketResponse = await fetch(
-                "http://localhost:5000/create-shiprocket-order",
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    customer: address,
-                    items: checkoutItems,
-                    amount: checkoutTotal,
-                    paymentId: response.razorpay_payment_id,
-                  }),
-                }
-              );
-
-              const shiprocketData = await shiprocketResponse.json();
-
-              if (!shiprocketData.success) {
-                shippingError = shiprocketData.message || "Shiprocket order creation failed.";
-                console.error("Shiprocket Error:", shiprocketData);
-              } else {
-                shiprocketOrderId = shiprocketData.orderId || null;
-                shipmentId = shiprocketData.shipmentId || null;
-                console.log("Shiprocket Order Created");
-              }
-            } catch (shipError) {
-              shippingError = String(shipError);
-              console.error("Shiprocket request failed:", shipError);
-            }
-
-            const finalOrderData = {
-              paymentId: response.razorpay_payment_id,
-              amount: checkoutTotal,
-              items: checkoutItems,
-              customer: address,
-              shiprocketOrderId,
-              shipmentId,
-              shippingError,
-            };
-
-            localStorage.setItem("order", JSON.stringify(finalOrderData));
-            localStorage.removeItem("checkoutProduct");
-            setSkipEmptyRedirect(true);
-            clearCart();
-            navigate("/order-success");
-          } catch (error) {
-            console.error("Verification Error:", error);
-            setProcessing(false);
-          }
-        },
-
-        prefill: {
-          name: address.name,
-          email: address.email,
-          contact: address.phone,
-        },
-
-        theme: {
-          color: "#2771F2",
-        },
+      const finalOrderData = {
+        paymentId: null,
+        amount: checkoutTotal,
+        items: checkoutItems,
+        customer: address,
+        shiprocketOrderId: null,
+        shipmentId: null,
+        shippingError: null,
       };
 
-      const razorpay = new window.Razorpay(options);
-      razorpay.open();
+      try {
+        const shiprocketResponse = await fetch("http://localhost:5000/create-shiprocket-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            customer: address,
+            items: checkoutItems,
+            amount: checkoutTotal,
+            paymentId: null,
+          }),
+        });
+
+        const shiprocketData = await shiprocketResponse.json();
+
+        if (!shiprocketData.success) {
+          finalOrderData.shippingError = shiprocketData.message || "Shiprocket order creation failed.";
+          console.error("Shiprocket Error:", shiprocketData);
+        } else {
+          finalOrderData.shiprocketOrderId = shiprocketData.orderId || null;
+          finalOrderData.shipmentId = shiprocketData.shipmentId || null;
+        }
+      } catch (err) {
+        finalOrderData.shippingError = String(err);
+        console.error("Shiprocket request failed:", err);
+      }
+
+      localStorage.setItem("order", JSON.stringify(finalOrderData));
+      localStorage.removeItem("checkoutProduct");
+      setSkipEmptyRedirect(true);
+      clearCart();
+      navigate("/order-success");
     } catch (error) {
-      console.error("Payment Error:", error);
+      console.error("Order Error:", error);
       setProcessing(false);
     }
   };

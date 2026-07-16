@@ -75,52 +75,10 @@ function OrderSuccess() {
                 </p>
 
 
-                {/* Order Details */}
-                <div className="mt-6 text-left bg-gray-50 rounded-xl p-5">
-
-                    <h2 className="font-bold text-lg mb-3">
-                        Order Details
-                    </h2>
+               
 
 
-                                                    <p className="text-sm">
-                                                            Payment ID:
-                                                    </p>
-
-                                                    <p className="font-medium break-all">
-                                                            {order.paymentId}
-                                                    </p>
-
-                                                    {order.shiprocketOrderId && (
-                                                        <>
-                                                            <p className="text-sm mt-3">Shiprocket Order ID:</p>
-                                                            <p className="font-medium">{order.shiprocketOrderId}</p>
-
-                                                            <p className="text-sm mt-2">Shipment ID:</p>
-                                                            <p className="font-medium">{order.shipmentId}</p>
-                                                        </>
-                                                    )}
-
-
-                    <p className="text-sm mt-3">
-                        Total Amount:
-                    </p>
-
-                    <p className="font-bold text-xl">
-                        ₹{order.amount}
-                    </p>
-
-                </div>
-
-
-                {/* Shipping Error */}
-                {order.shippingError && (
-                  <div className="mt-5 text-left bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700">
-                    <p className="font-semibold">Shipping issue detected</p>
-                    <p>{order.shippingError}</p>
-                    <p className="mt-2 text-gray-600">Your order payment completed successfully; shipping will be retried by support.</p>
-                  </div>
-                )}
+              
 
                 {/* Items */}
                 <div className="mt-5 text-left">
